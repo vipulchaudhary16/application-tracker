@@ -1,0 +1,11 @@
+.add-icon{
+    margin: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.home-div{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
