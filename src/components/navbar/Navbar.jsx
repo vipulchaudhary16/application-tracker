@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navbar.css';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
     const handleLogOut = () => {
@@ -8,20 +9,14 @@ const Navbar = () => {
     }
     return (
         <nav className="navbar">
-            <div className="navbar-logo">Logo</div>
+            <div className="navbar-logo">
+                <span>Job Tracker</span>
+            </div>
             <ul className="navbar-nav">
-                <li className="nav-item">
-                    <a href="#" className="nav-link">Home</a>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">About</a>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">Contact</a>
-                </li>
+                <img src={logo} alt="" />
             </ul>
             <div className="navbar-right">
-                <button className="logout-btn" onClick={() => handleLogOut()} >Logout</button>
+                <button className="logout-btn" onClick={() => handleLogOut()} >Log out</button>
             </div>
         </nav>
     );

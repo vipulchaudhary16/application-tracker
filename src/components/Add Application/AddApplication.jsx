@@ -116,6 +116,9 @@ const AddApplication = () => {
             setUrl('');
             setResumeLink('');
             setCvLink('');
+            setResumeFile(null);
+            setCvFile(null);
+            window.location.reload();
         } else {
             alert('Error adding application');
         }

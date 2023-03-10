@@ -19,6 +19,13 @@ const ApplicationList = () => {
             {applications.map((application) => (
                 <ApplicationCard application={application} />
             ))}
+            {
+                applications.length === 0 && (
+                    <div className="no-applications">
+                        <h2>No Applications</h2>
+                    </div>
+                )
+            }
         </div>
     );
 };
