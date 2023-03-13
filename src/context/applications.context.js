@@ -8,10 +8,10 @@ export const ApplicationContext = createContext({
 })
 
 export const ApplicationProvider = ({ children }) => {
-    const HOST = 'http://localhost:8000/api/application'
+    const API = 'https://application-tracker-server.vercel.app/api'
 
     const getAllApplications = async () => {
-        const response = await fetch(`${HOST}/get-all`, {
+        const response = await fetch(`${API}/get-all`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const ApplicationProvider = ({ children }) => {
     }
 
     const addApplication = async (application) => {
-        const response = await fetch(`${HOST}/add`, {
+        const response = await fetch(`${API}/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const ApplicationProvider = ({ children }) => {
     }
 
     const updateApplication = async (application) => {
-        const response = await fetch(`${HOST}/update/${application._id}`, {
+        const response = await fetch(`${API}/update/${application._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export const ApplicationProvider = ({ children }) => {
     }
 
     const deleteApplication = async (application) => {
-        const response = await fetch(`${HOST}/delete/${application._id}`, {
+        const response = await fetch(`${API}/delete/${application._id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

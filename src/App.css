@@ -1,56 +1,51 @@
 /*Welcome page css*/
 .home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f9f9f9;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .quote {
-    margin-top: 50px;
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-style: italic;
-    text-align: center;
-  }
-  
-  .author {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: right;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-  }
-  
-  .login-button,
-  .signup-button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .login-button:hover,
-  .signup-button:hover {
-    background-color: #555;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.quote {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-style: italic;
+  text-align: center;
+}
+
+.author {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.login-button,
+.signup-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  margin: 1rem;
+}

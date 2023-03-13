@@ -63,7 +63,7 @@ const Signup = () => {
                         onChange={(event) => setConfirmPassword(event.target.value)}
                     />
                 </label>
-                <button type="submit">Submit</button>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     );

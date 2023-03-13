@@ -7,13 +7,12 @@ export const UserContext = createContext({
 
 });
 
-
 export const UserProvider = ({ children }) => {
-    const HOST = 'http://localhost:8000/api'
+    const API = 'https://application-tracker-server.vercel.app/api'
 
     const logIn = async ({email, password}) => {
         try {
-            const response = await axios.post(HOST + '/auth/login', {
+            const response = await axios.post(API + '/auth/login', {
                 email: email,
                 password: password
             });
@@ -26,7 +25,7 @@ export const UserProvider = ({ children }) => {
 
     const signUp = async ({name, email, password}) => {
         try {
-            const response = await axios.post(HOST + '/auth/register', {
+            const response = await axios.post(API + '/auth/register', {
                 name,
                 email,
                 password

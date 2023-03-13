@@ -10,7 +10,9 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar-logo">
-                <span>Job Tracker</span>
+                <a href="/">
+                    <span>Job Tracker</span>
+                </a>
             </div>
             <ul className="navbar-nav">
                 <img src={logo} alt="" />
