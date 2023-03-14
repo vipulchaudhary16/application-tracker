@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from "../../context/user.context";
-
 //css in App.css
 
 const SignUp = () => {
@@ -38,6 +37,7 @@ const SignUp = () => {
                         type="text"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
+                        required
                     />
                 </label>
                 <label>
@@ -46,6 +46,7 @@ const SignUp = () => {
                         type="email"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
+                        required
                     />
                 </label>
                 <label>
@@ -54,6 +55,7 @@ const SignUp = () => {
                         type="password"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
+                        required
                     />
                 </label>
                 <label>
@@ -62,6 +64,7 @@ const SignUp = () => {
                         type="password"
                         value={confirmPassword}
                         onChange={(event) => setConfirmPassword(event.target.value)}
+                        required
                     />
                 </label>
                 <button type="submit" className="btn btn-primary">SIGN UP</button>

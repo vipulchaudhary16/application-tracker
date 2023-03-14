@@ -30,6 +30,7 @@ const Login = () => {
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            required
           />
         </label>
         <label>
@@ -38,6 +39,7 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            required
           />
         </label>
         <button type="submit" className="btn btn-primary ">Log In</button>

@@ -135,7 +135,7 @@ const AddApplication = () => {
             />
             <div>
                 <label htmlFor="company">Company</label>
-                <input type="text" id="company" value={company} onChange={handleCompanyChange} />
+                <input type="text" id="company" value={company} onChange={handleCompanyChange} required />
             </div>
             <div>
                 <label htmlFor="role">Role</label>
