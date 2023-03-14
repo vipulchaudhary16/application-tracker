@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+//css written in App.css
 
 function Welcome() {
     const quotes = [
@@ -33,10 +34,10 @@ function Welcome() {
             <p className="author">{`- ${randomQuote.author}`}</p>
             <div className="button-container">
                 <Link to="/login">
-                    <button className="login-button">Login</button>
+                    <button className="btn btn-primary">LOGIN</button>
                 </Link>
                 <Link to="/signup">
-                    <button className="signup-button">Sign Up</button>
+                    <button className="btn btn-secondary">SIGNUP</button>
                 </Link>
             </div>
         </div>

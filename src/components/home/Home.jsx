@@ -3,7 +3,7 @@ import AddApplication from "../Add Application/AddApplication";
 import ApplicationList from "../Applications/ApplicationList";
 import Welcome from "../Welcome";
 import { AiOutlinePlusSquare } from "react-icons/ai";
-import "./home.css";
+import "./Home.css";
 
 const Home = () => {
     const isLoggedIn = localStorage.getItem('token') ? true : false;
@@ -20,7 +20,10 @@ const Home = () => {
                     <Welcome />
                 ) : (
                     <div className="home-div">
-                        <AiOutlinePlusSquare className="add-icon" onClick={() => toggleFrom()} />
+                        <div className="icon-container" onClick={() => toggleFrom()}>
+                            <AiOutlinePlusSquare className="add-icon" title="click here to add new job" />
+                            <span>Click here to add </span>
+                        </div>
                         {showForm && <AddApplication />}
                         <ApplicationList />
                     </div>

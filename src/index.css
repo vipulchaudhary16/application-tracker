@@ -1,10 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap');
+
+:root {
+  --primary: #08202b;
+  --primary-dark: #021924;
+  --btn-primary: rgb(0, 82, 0);
+  --btn-secondary: rgb(203, 203, 1);
+  --container-top-m: 30px
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  background-color: var(--primary);
+  color: rgb(219, 206, 206);
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background-color: var(--btn-primary);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--btn-secondary);
+  color: black;
+}
+
 a {
   text-decoration: none;
   color: white;
+}
+
+.link {
+  text-align: center;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.link:hover {
+  color: var(--btn-secondary);
+}
+
+/*Mobile CSS*/
+@media screen and (max-width: 768px) {
+  .btn{
+    padding: 5px 10px;
+    font-size: 14px;
+  }
 }

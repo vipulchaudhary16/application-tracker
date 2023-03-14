@@ -1,6 +1,6 @@
 import React from 'react';
-import './Navbar.css';
 import logo from '../../assets/logo.png';
+import './Navbar.css';
 
 const Navbar = () => {
     const handleLogOut = () => {
@@ -18,7 +18,9 @@ const Navbar = () => {
                 <img src={logo} alt="" />
             </ul>
             <div className="navbar-right">
-                <button className="logout-btn" onClick={() => handleLogOut()} >Log out</button>
+                {
+                    localStorage.getItem('token') ? (<button className="btn logout-btn" onClick={() => handleLogOut()} >Log out</button>) : (null)
+                }
             </div>
         </nav>
     );

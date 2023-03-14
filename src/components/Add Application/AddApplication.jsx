@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react';
-import './addApplication.css'
-import { set, ref } from "firebase/database";
-import { storage, db } from "../../utils/Firebase";
+import { storage } from "../../utils/firebase";
 import {
     ref as storeRef,
     uploadBytesResumable,
@@ -9,6 +7,9 @@ import {
 } from "firebase/storage";
 import LoadingBar from "react-top-loading-bar";
 import { ApplicationContext } from '../../context/applications.context';
+import './AddApplication.css'
+
+//css in App.css
 
 const AddApplication = () => {
     const [company, setCompany] = useState('');
@@ -20,7 +21,7 @@ const AddApplication = () => {
     const [resumeFile, setResumeFile] = useState(null);
     const [cvFile, setCvFile] = useState(null);
     const [progress, setProgress] = useState(0);
-    const {addApplication} = useContext(ApplicationContext)
+    const { addApplication } = useContext(ApplicationContext)
 
 
     const handleCompanyChange = (event) => {
@@ -144,8 +145,8 @@ const AddApplication = () => {
                 <label htmlFor="status">Status</label>
                 <select id="status" value={status} onChange={handleStatusChange}>
                     <option value="">Select Status</option>
-                    <option value="Applied">Applied</option>
                     <option value="Ready to Apply">Ready to Apply</option>
+                    <option value="Applied">Applied</option>
                     <option value="Offered">Offered</option>
                     <option value="Signed">Signed</option>
                     <option value="Rejected">Rejected</option>
@@ -163,7 +164,7 @@ const AddApplication = () => {
                 <label htmlFor="cvFile">CV</label>
                 <input type="file" id="cvFile" onChange={handleCvFileChange} accept="application/pdf" />
             </div>
-            <button type="submit">Add Job Application</button>
+            <button type="submit" className='btn btn-primary'>Add Job Application</button>
         </form>
     );
 }

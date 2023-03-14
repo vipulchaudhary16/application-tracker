@@ -3,10 +3,10 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
   color: #fff;
   height: 60px;
   padding: 0 20px;
+  background-color: var(--primary-dark);
 }
 
 .navbar-logo {
@@ -36,10 +36,10 @@
 }
 
 .logout-btn {
-  background-color: red;
+  background-color: rgb(150, 3, 3);
   border: none;
   cursor: pointer;
-  font-size: 1.2rem;
+  color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -48,7 +48,6 @@
     position: absolute;
     top: 60px;
     left: 0;
-    background-color: #333;
     width: 100%;
     flex-direction: column;
     align-items: center;

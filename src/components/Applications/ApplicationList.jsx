@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ApplicationContext } from "../../context/applications.context";
-import ApplicationCard from "../card/ApplicationCard";
-import "./applicationlist.css";
+import ApplicationCard from "../Card/ApplicationCard";
+import "./Applicationlist.css";
 
 const ApplicationList = () => {
     const [applications, setApplications] = useState([])

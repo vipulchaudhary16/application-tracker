@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from "../../context/user.context";
-import "./signup.css";
 
-const Signup = () => {
+//css in App.css
+
+const SignUp = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,7 +15,7 @@ const Signup = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (confirmPassword != password) {
+        if (confirmPassword !== password) {
             alert("Password does not match")
             return
         }
@@ -30,9 +31,9 @@ const Signup = () => {
     return (
         <div className="signup-container">
             <form onSubmit={handleSubmit}>
-                <h1>Signup</h1>
+                <h1>SIGN UP</h1>
                 <label>
-                    Name:
+                    Name
                     <input
                         type="text"
                         value={name}
@@ -40,7 +41,7 @@ const Signup = () => {
                     />
                 </label>
                 <label>
-                    Email:
+                    Email
                     <input
                         type="email"
                         value={email}
@@ -48,7 +49,7 @@ const Signup = () => {
                     />
                 </label>
                 <label>
-                    Password:
+                    Password
                     <input
                         type="password"
                         value={password}
@@ -56,17 +57,18 @@ const Signup = () => {
                     />
                 </label>
                 <label>
-                    Confirm Password:
+                    Confirm Password
                     <input
                         type="password"
                         value={confirmPassword}
                         onChange={(event) => setConfirmPassword(event.target.value)}
                     />
                 </label>
-                <button type="submit">Sign Up</button>
+                <button type="submit" className="btn btn-primary">SIGN UP</button>
+                <Link to="/login" className="link">Already have an account?</Link>
             </form>
         </div>
     );
 };
 
-export default Signup;
+export default SignUp;

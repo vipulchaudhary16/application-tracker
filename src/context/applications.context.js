@@ -8,7 +8,7 @@ export const ApplicationContext = createContext({
 })
 
 export const ApplicationProvider = ({ children }) => {
-    const API = 'https://application-tracker-server.vercel.app/api'
+    const API = 'https://application-tracker-server.vercel.app/api/application'
 
     const getAllApplications = async () => {
         const response = await fetch(`${API}/get-all`, {

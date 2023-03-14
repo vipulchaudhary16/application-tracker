@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ApplicationContext } from "../../context/applications.context";
-import "./card.css";
 import { RxCrossCircled } from "react-icons/rx";
+import "./Card.css";
 
 const ApplicationCard = ({ application }) => {
     const { company, cv, resume, role, status, url } = application;
@@ -28,7 +28,7 @@ const ApplicationCard = ({ application }) => {
 
     return (
         <div className="card-container">
-            <  RxCrossCircled className="cross-icon" onClick={(e)=> handleDelete(e)} />
+            <  RxCrossCircled className="cross-icon" onClick={(e) => handleDelete(e)} />
             <h2>{company}</h2>
             <p className="role-name">{role}</p>
             <p>Status: <select id="status" value={status} onChange={(e) => handleStatusChange(e)}>
@@ -42,13 +42,13 @@ const ApplicationCard = ({ application }) => {
 
             <div className="links-container">
                 {
-                    resume && (<a href={resume} target="_blank" rel="noopener noreferrer"> Resume</a>)
+                    resume && (<a href={resume} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" > Resume</a>)
                 }
                 {
-                    cv && (<a href={cv} target="_blank" rel="noopener noreferrer"> CV</a>)
+                    cv && (<a href={cv} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" > CV</a>)
                 }
                 {
-                    url && <a href={url} target="_blank" rel="noopener noreferrer">Link to Application</a>
+                    url && <a href={url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" >Link to Application</a>
                 }
             </div>
         </div>
