@@ -2,7 +2,7 @@
 
 :root {
   --primary: #08202b;
-  --primary-dark: #021924;
+  --primary-light: #1073a1;
   --btn-primary: rgb(0, 82, 0);
   --btn-secondary: rgb(203, 203, 1);
   --container-top-m: 30px
@@ -33,6 +33,20 @@ body {
 .btn-primary {
   background-color: var(--btn-primary);
   color: white;
+}
+
+.btn-primary:hover{
+  background: transparent;
+}
+
+.btn-secondary:hover{
+  background: white;
+  color: black;
+  scale: 1.05;
+  transition: ease-in-out 1ms;
+}
+.btn-primary:hover{
+  background: transparent;
 }
 
 .btn-secondary {

@@ -42,13 +42,13 @@ const ApplicationCard = ({ application }) => {
 
             <div className="links-container">
                 {
-                    resume && (<a href={resume} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" > Resume</a>)
+                    resume && (<a href={resume} target="_blank" rel="noopener noreferrer" className="btn  card-btn" > Resume</a>)
                 }
                 {
-                    cv && (<a href={cv} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" > CV</a>)
+                    cv && (<a href={cv} target="_blank" rel="noopener noreferrer" className="btn card-btn" > CV</a>)
                 }
                 {
-                    url && <a href={url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" >Link to Application</a>
+                    url && <a href={url} target="_blank" rel="noopener noreferrer" className="btn  card-btn" >Link to Application</a>
                 }
             </div>
         </div>

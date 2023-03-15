@@ -4,7 +4,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 20rem;
     position: relative;
-    background-color: var(--primary-dark);
+    background-color: var(--primary-light);
 }
 
 .cross-icon {
@@ -18,16 +18,28 @@
 .card-container h2 {
     margin-top: 0;
     margin-bottom: 10px;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 .role-name {
     margin-top: 0;
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: bold;
 }
+
+.card-btn{
+    background-color: rgb(63 137 138);
+    color: white;
+}
+
+.card-btn:hover{
+    background: white;
+    color: black;
+    scale: 1.05;
+    transition: ease-in-out 1ms;
+  }
 
 .links-container {
     display: flex;
@@ -39,9 +51,8 @@
 
 .links-container a {
     padding: 10px;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
     border-radius: 5px;
-    color: #333;
     text-decoration: none;
     font-size: 10px;
     font-weight: bold;
