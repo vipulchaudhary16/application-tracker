@@ -36,22 +36,20 @@ body {
 }
 
 .btn-primary:hover{
-  background: transparent;
-}
-
-.btn-secondary:hover{
-  background: white;
-  color: black;
+  background: rgb(14, 120, 14);
   scale: 1.05;
   transition: ease-in-out 1ms;
-}
-.btn-primary:hover{
-  background: transparent;
 }
 
 .btn-secondary {
   background-color: var(--btn-secondary);
   color: black;
+}
+
+.btn-secondary:hover{
+  background: rgb(189, 189, 65);
+  scale: 1.05;
+  transition: ease-in-out 1ms;
 }
 
 a {
