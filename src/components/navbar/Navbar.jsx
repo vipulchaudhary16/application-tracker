@@ -12,6 +12,7 @@ const Navbar = () => {
             <div className="navbar-logo">
                 <a href="/">
                     <span>Job Tracker</span>
+                    
                 </a>
             </div>
             <ul className="navbar-nav">
