@@ -1,0 +1,76 @@
+.card-container {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 20rem;
+    position: relative;
+    background-color: var(--primary-light);
+}
+
+.cross-icon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.card-container h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.role-name {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.card-btn{
+    background-color: rgb(27, 27, 27);
+    color: white;
+}
+
+.card-btn:hover{
+    background: white;
+    color: black;
+    scale: 1.05;
+    transition: ease-in-out 1ms;
+  }
+
+.links-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+.links-container a {
+    padding: 10px;
+    /* border: 1px solid #333; */
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*Mobile CSS*/
+@media screen and (max-width: 768px) {
+    .card-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .card-container h2{
+        font-size: 1.2rem;
+    }
+
+    .role-name {
+        font-size: 1rem;
+    }
+}
