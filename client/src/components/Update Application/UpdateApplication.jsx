@@ -1,27 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { storage } from "../../utils/Firebase";
 import {
     ref as storeRef,
     uploadBytesResumable,
     getDownloadURL,
 } from "firebase/storage";
+import LoadingBar from "react-top-loading-bar";
 import { ApplicationContext } from '../../context/applications.context';
-import './AddApplication.css'
 import { UIContext } from '../../context/ui.controler.context';
 import { AlertContext } from '../../context/alert.context';
 
-//css in App.css
-const AddApplication = () => {
+const UpdateApplication = () => {
     const [company, setCompany] = useState('');
     const [role, setRole] = useState('');
-    const [status, setStatus] = useState('Ready to Apply');
+    const [status, setStatus] = useState('');
     const [url, setUrl] = useState('');
     const [resumeLink, setResumeLink] = useState('');
     const [cvLink, setCvLink] = useState('');
     const [remark, setRemark] = useState("")
-    const { addApplication, loadApplications } = useContext(ApplicationContext)
-    const { setActiveModeType, setProgress } = useContext(UIContext)
     const { setAlertMessage } = useContext(AlertContext)
+    const { updatingApplication, updateApplication, loadApplications } = useContext(ApplicationContext)
+    const { setProgress, setActiveModeType } = useContext(UIContext)
 
     const handleCompanyChange = (event) => {
         setCompany(event.target.value);
@@ -93,10 +92,20 @@ const AddApplication = () => {
         );
     }
 
+    useEffect(() => {
+        setCompany(updatingApplication.company)
+        setRole(updatingApplication.role)
+        setStatus(updatingApplication.status)
+        setUrl(updatingApplication.url)
+        setResumeLink(updatingApplication.resume)
+        setCvLink(updatingApplication.cv)
+        setRemark(updatingApplication.remark)
+    }, [updatingApplication])
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // submit form data here
         const application = {
+            _id: updatingApplication._id,
             company,
             role,
             status,
@@ -105,30 +114,17 @@ const AddApplication = () => {
             resume: resumeLink,
             cv: cvLink,
         };
-        console.log(application)
-        await addApplication(application).then((res) => {
-            if (res.errors) {
-                setAlertMessage("Something went wrong")
-                return
-            }
-            setAlertMessage('Application added successfully');
-            setCompany('');
-            setRole('');
-            setStatus('');
-            setUrl('');
-            setResumeLink('');
-            setCvLink('');
-            setRemark("")
-            loadApplications();
-            setActiveModeType("")
-        }).catch((error) => {
-            setAlertMessage('Error adding application');
-        })
+        await updateApplication(application).then((res) => {
+            setAlertMessage(res.message);
+            loadApplications()
+
+        });
+        setActiveModeType("")
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <p>Add new application</p>
+            <p>Update application</p>
             <div>
                 <label htmlFor="company">Company</label>
                 <input type="text" id="company" value={company} onChange={handleCompanyChange} required />
@@ -140,7 +136,7 @@ const AddApplication = () => {
             <div>
                 <label htmlFor="status">Status</label>
                 <select id="status" value={status} onChange={handleStatusChange}>
-                    {/* <option value="">Select Status</option> */}
+                    <option value="">Select Status</option>
                     <option value="Ready to Apply">Ready to Apply</option>
                     <option value="Applied">Applied</option>
                     <option value="Offered">Offered</option>
@@ -155,18 +151,20 @@ const AddApplication = () => {
             <div>
                 <label htmlFor="resumeFile">Resume</label>
                 <input type="file" id="resumeFile" onChange={handleResumeFileChange} accept="application/pdf" />
+                <a href={resumeLink} target='_blank'>View</a>
             </div>
             <div>
                 <label htmlFor="cvFile">CV</label>
                 <input type="file" id="cvFile" onChange={handleCvFileChange} accept="application/pdf" />
+                <a href={cvLink} target='_blank'>View</a>
             </div>
             <div>
                 <label htmlFor="remark">Remark if any</label>
                 <textarea id="remark" value={remark} onChange={(e) => setRemark(e.target.value)} />
             </div>
-            <button type="submit" className='btn btn-primary'>Add Job Application</button>
+            <button type="submit" className='btn btn-primary'>Update</button>
         </form>
     );
 }
 
-export default AddApplication;
+export default UpdateApplication;

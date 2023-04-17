@@ -9,7 +9,7 @@ export const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
-    const API = 'https://application-tracker-server.vercel.app/api'
+    const API = 'https://application-tracker-api.vercel.app/api'
     const [currentUser, setCurrentUser] = useState(null)
 
     const logIn = async ({ email, password }) => {
@@ -20,7 +20,6 @@ export const UserProvider = ({ children }) => {
             });
             return response
         } catch (error) {
-            console.error(error);
             alert(error.request.response)
         }
     }

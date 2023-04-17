@@ -3,16 +3,19 @@ import { createContext, useEffect, useState } from "react";
 export const ApplicationContext = createContext({
     loadApplications: async () => { },
     applications: [],
-    addApplication: async (application) => { },
-    updateApplication: async (application) => { },
-    deleteApplication: async (application) => { },
+    addApplication: async () => { },
+    updateApplication: async () => { },
+    deleteApplication: async () => { },
+    updatingApplication: {},
+    setUpdatingApplication: () => { }
 })
 
 export const ApplicationProvider = ({ children }) => {
-    const API = 'https://application-tracker-server.vercel.app/api/application'
+    const API = 'https://application-tracker-api.vercel.app/api/application'
     const [applications, setApplications] = useState([])
+    const [updatingApplication, setUpdatingApplication] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         loadApplications()
     }, [])
 
@@ -43,7 +46,6 @@ export const ApplicationProvider = ({ children }) => {
             body: JSON.stringify(application)
         });
         const json = await response.json();
-        console.log(json)
         return json
     }
 
@@ -57,7 +59,6 @@ export const ApplicationProvider = ({ children }) => {
             body: JSON.stringify(application)
         });
         const json = await response.json();
-        console.log(json)
         return json
     }
 
@@ -70,11 +71,10 @@ export const ApplicationProvider = ({ children }) => {
             },
         });
         const json = await response.json();
-        console.log(json)
         return json
     }
 
-    const value = { loadApplications, applications, addApplication, updateApplication, deleteApplication }
+    const value = { loadApplications, applications, addApplication, updateApplication, deleteApplication, setUpdatingApplication, updatingApplication }
     return <ApplicationContext.Provider value={value} >
         {children}
     </ApplicationContext.Provider>

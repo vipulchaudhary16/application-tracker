@@ -3,9 +3,13 @@ import logo from '../../assets/logo.png';
 import './Navbar.css';
 import { UserContext } from '../../context/user.context';
 import { Link, useNavigate } from 'react-router-dom';
+import { AiOutlinePlusSquare } from 'react-icons/ai';
+import { MODAL_TYPES, UIContext } from '../../context/ui.controler.context';
 
 const Navbar = () => {
     const { currentUser, loadUser } = useContext(UserContext)
+    const { setActiveModeType } = useContext(UIContext);
+
     const navigate = useNavigate()
     const handleLogOut = () => {
         localStorage.removeItem('token')
@@ -25,7 +29,16 @@ const Navbar = () => {
             </ul>
             <div className="navbar-right">
                 {
-                    currentUser ? (<button className="btn logout-btn" onClick={() => handleLogOut()} >Log out</button>) : (null)
+                    currentUser ? (
+                        <>
+                            <div className="icon-container" onClick={() => setActiveModeType(MODAL_TYPES.ADD)}>
+                                <AiOutlinePlusSquare className="add-icon" title="click here to add new job" />
+                                <span>Add </span>
+                            </div>
+                            <button className="btn logout-btn" onClick={() => handleLogOut()} >Log out</button>
+                        </>
+
+                    ) : (null)
                 }
             </div>
         </nav>

@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import { ApplicationContext } from "../../context/applications.context";
-import { RxCrossCircled } from "react-icons/rx";
+import { AiOutlineDelete } from "react-icons/ai";
+import { FiEdit } from "react-icons/fi";
 import "./Card.css";
 import { AlertContext } from "../../context/alert.context";
+import { MODAL_TYPES, UIContext } from "../../context/ui.controler.context";
 
 const ApplicationCard = ({ application }) => {
-    const { company, cv, resume, role, status, url } = application;
-    const { updateApplication, deleteApplication, loadApplications } = useContext(ApplicationContext);
-    const {setAlertMessage} = useContext(AlertContext)
+    const { company, cv, resume, role, status, url, remark: remarks } = application;
+    const { updateApplication, deleteApplication, loadApplications, setUpdatingApplication } = useContext(ApplicationContext);
+    const { setActiveModeType } = useContext(UIContext);
+    const { setAlertMessage } = useContext(AlertContext)
 
     const handleStatusChange = async (e) => {
         const updatedStatus = e.target.value;
@@ -28,9 +31,18 @@ const ApplicationCard = ({ application }) => {
         loadApplications();
     }
 
+    const handleApplicationUpdate = async () => {
+        setActiveModeType(MODAL_TYPES.UPDATE)
+        setUpdatingApplication(application)
+        // setAlertMessage(res.message);
+    }
+
     return (
         <div className="card-container">
-            <  RxCrossCircled className="cross-icon" onClick={(e) => handleDelete(e)} />
+            <span className="operation-icons" >
+                <AiOutlineDelete onClick={(e) => handleDelete(e)} />
+                <FiEdit onClick={() => handleApplicationUpdate()} />
+            </span>
             <h2>{company}</h2>
             <p className="role-name">{role}</p>
             <p>Status:
@@ -53,6 +65,13 @@ const ApplicationCard = ({ application }) => {
                 {
                     url && <a href={url} target="_blank" rel="noopener noreferrer" className="btn  card-btn" >Link to Application</a>
                 }
+            </div>
+            <div>{
+                remarks && <>
+                    <h2>Remarks:</h2>
+                    <p>{remarks.split("\n").map((remark) => <li>{remark}</li>)}</p>
+                </>
+            }
             </div>
         </div>
     );

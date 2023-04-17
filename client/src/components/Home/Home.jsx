@@ -5,11 +5,13 @@ import Welcome from "../Welcome";
 import { AiOutlinePlusSquare } from "react-icons/ai";
 import "./Home.css";
 import { useContext } from "react";
-import { UIContext } from "../../context/ui.controler.context";
+import { MODAL_TYPES, UIContext } from "../../context/ui.controler.context";
+import { PopUpModel } from "../PopUpModel";
+import UpdateApplication from "../Update Application/UpdateApplication";
 
 const Home = () => {
     const isLoggedIn = localStorage.getItem('token') ? true : false;
-    const { formDisplay, toggleForm } = useContext(UIContext);
+    const { activeModel } = useContext(UIContext);
 
     return (
         <>
@@ -18,11 +20,8 @@ const Home = () => {
                     <Welcome />
                 ) : (
                     <div className="home-div">
-                        <div className="icon-container" onClick={() => toggleForm()}>
-                            <AiOutlinePlusSquare className="add-icon" title="click here to add new job" />
-                            <span>Click here to add </span>
-                        </div>
-                        {formDisplay && <AddApplication />}
+                        {activeModel == MODAL_TYPES.ADD && <PopUpModel > <AddApplication /></PopUpModel>}
+                        {activeModel == MODAL_TYPES.UPDATE && <PopUpModel > <UpdateApplication /></PopUpModel>}
                         <ApplicationList />
                     </div>
                 )

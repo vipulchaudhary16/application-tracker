@@ -2,18 +2,26 @@ import { useState } from "react";
 import { createContext } from "react";
 
 export const UIContext = createContext({
-    toggleForm: () => { },
-    formDisplay: false,
+    activeModel: '',
+    setActiveModeType: () => { },
+    progress: 0,
+    setProgress: () => { }
 });
 
-export const UIProvider = ({ children }) => {
-    const [formDisplay, setFormDisplay] = useState(false)
+export const MODAL_TYPES = {
+    ADD: "add",
+    UPDATE: 'update'
+}
 
-    const toggleForm = () => {
-        setFormDisplay(!formDisplay)
+export const UIProvider = ({ children }) => {
+    const [activeModel, setActiveMode] = useState(false)
+    const [progress, setProgress] = useState(0)
+
+    const setActiveModeType = (type) => {
+        setActiveMode(type)
     }
 
-    const value = { toggleForm, formDisplay }
+    const value = { setActiveModeType, activeModel, progress, setProgress }
     return <UIContext.Provider value={value}>
         {children}
     </UIContext.Provider>
