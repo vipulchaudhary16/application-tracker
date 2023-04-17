@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import logo from '../../assets/logo.png';
 import './Navbar.css';
 import { UserContext } from '../../context/user.context';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const { currentUser, loadUser } = useContext(UserContext)
@@ -15,10 +15,10 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar-logo">
-                <a href="/">
+                <Link to="/">
                     <span>Job Tracker</span>
 
-                </a>
+                </Link>
             </div>
             <ul className="navbar-nav">
                 <img src={logo} alt="" />
