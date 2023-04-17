@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from "../../context/user.context";
+import { AlertContext } from "../../context/alert.context";
 //css in App.css
 
 const SignUp = () => {
@@ -11,19 +12,20 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const { signUp } = useContext(UserContext)
+    const {setAlertMessage} = useContext(AlertContext)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (confirmPassword !== password) {
-            alert("Password does not match")
+            setAlertMessage("Password does not match")
             return
         }
         const response = await signUp({ name, email, password })
         if (response) {
-            alert("Account Created")
+            setAlertMessage("Account Created")
             navigate("/login")
         } else {
-            alert("Failed")
+            setAlertMessage("Failed")
         }
     };
 

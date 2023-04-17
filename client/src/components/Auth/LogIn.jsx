@@ -9,7 +9,7 @@ const LogIn = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
 
-  const { logIn } = useContext(UserContext)
+  const { logIn, loadUser } = useContext(UserContext)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,6 +17,7 @@ const LogIn = () => {
     if (response) {
       navigate("/")
       localStorage.setItem('token', response.data.token)
+      loadUser()
     }
   };
 

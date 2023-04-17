@@ -65,6 +65,41 @@ input {
   margin-top: 5px;
 }
 
+.alert-container {
+  margin: auto 0;
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  translate: -50%;
+  z-index: 9999;
+  width: 33vh;
+}
+
+.alert-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background-color: #f8d7da;
+  color: #721c24;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.alert-text {
+  margin: 0;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.alert-close-button {
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+}
+
 /*Mobile CSS*/
 @media screen and (max-width: 768px) {
   form {

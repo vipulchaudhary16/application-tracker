@@ -4,16 +4,21 @@ import './index.css';
 import App from './App';
 import { UserProvider } from './context/user.context';
 import { ApplicationProvider } from './context/applications.context';
+import { UIProvider } from './context/ui.controler.context';
+import { AlertProvider } from './context/alert.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserProvider>
-      <ApplicationProvider>
-        
-    <App />
-      </ApplicationProvider>
-    </UserProvider>
+    <AlertProvider>
+      <UIProvider>
+        <UserProvider>
+          <ApplicationProvider>
+            <App />
+          </ApplicationProvider>
+        </UserProvider>
+      </UIProvider>
+    </AlertProvider>
   </React.StrictMode>
 );
 

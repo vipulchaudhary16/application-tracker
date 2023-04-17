@@ -1,7 +1,8 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ApplicationContext = createContext({
-    getAllApplications: async () => { },
+    loadApplications: async () => { },
+    applications: [],
     addApplication: async (application) => { },
     updateApplication: async (application) => { },
     deleteApplication: async (application) => { },
@@ -9,6 +10,15 @@ export const ApplicationContext = createContext({
 
 export const ApplicationProvider = ({ children }) => {
     const API = 'https://application-tracker-server.vercel.app/api/application'
+    const [applications, setApplications] = useState([])
+
+    useEffect(()=>{
+        loadApplications()
+    }, [])
+
+    const loadApplications = async () => {
+        setApplications(await getAllApplications())
+    }
 
     const getAllApplications = async () => {
         const response = await fetch(`${API}/get-all`, {
@@ -64,7 +74,7 @@ export const ApplicationProvider = ({ children }) => {
         return json
     }
 
-    const value = { getAllApplications, addApplication, updateApplication, deleteApplication }
+    const value = { loadApplications, applications, addApplication, updateApplication, deleteApplication }
     return <ApplicationContext.Provider value={value} >
         {children}
     </ApplicationContext.Provider>

@@ -8,6 +8,8 @@ import {
 import LoadingBar from "react-top-loading-bar";
 import { ApplicationContext } from '../../context/applications.context';
 import './AddApplication.css'
+import { UIContext } from '../../context/ui.controler.context';
+import { AlertContext } from '../../context/alert.context';
 
 //css in App.css
 
@@ -21,7 +23,9 @@ const AddApplication = () => {
     const [resumeFile, setResumeFile] = useState(null);
     const [cvFile, setCvFile] = useState(null);
     const [progress, setProgress] = useState(0);
-    const { addApplication } = useContext(ApplicationContext)
+    const { addApplication, loadApplications } = useContext(ApplicationContext)
+    const { toggleForm } = useContext(UIContext)
+    const {setAlertMessage} = useContext(AlertContext)
 
 
     const handleCompanyChange = (event) => {
@@ -56,7 +60,7 @@ const AddApplication = () => {
                 setProgress(progress);
             },
             (error) => {
-                alert(error.message);
+                setAlertMessage(error.message);
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
@@ -84,7 +88,7 @@ const AddApplication = () => {
                 setProgress(progress);
             },
             (error) => {
-                alert(error.message);
+                setAlertMessage(error.message);
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
@@ -110,7 +114,7 @@ const AddApplication = () => {
         console.log(application);
         const response = await addApplication(application);
         if (response) {
-            alert('Application added successfully');
+            setAlertMessage('Application added successfully');
             setCompany('');
             setRole('');
             setStatus('');
@@ -119,9 +123,10 @@ const AddApplication = () => {
             setCvLink('');
             setResumeFile(null);
             setCvFile(null);
-            window.location.reload();
+            loadApplications();
+            toggleForm();
         } else {
-            alert('Error adding application');
+            setAlertMessage('Error adding application');
         }
     }
 

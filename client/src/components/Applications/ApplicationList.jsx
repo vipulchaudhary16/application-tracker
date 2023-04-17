@@ -4,19 +4,14 @@ import ApplicationCard from "../Card/ApplicationCard";
 import "./Applicationlist.css";
 
 const ApplicationList = () => {
-    const [applications, setApplications] = useState([])
-    const { getAllApplications } = useContext(ApplicationContext)
+    const { applications, loadApplications } = useContext(ApplicationContext)
 
-    useEffect(() => {
-        load()
+    useEffect(()=>{
+        loadApplications()
     }, [])
-    const load = async () =>
-        setApplications(await getAllApplications())
-
-
     return (
         <div className="application-list-container">
-            {applications.map((application) => (
+            {applications.length > 0 && applications.map((application) => (
                 <ApplicationCard application={application} />
             ))}
             {
