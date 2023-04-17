@@ -3,7 +3,7 @@ const User = require('../models/User');
 const router = Router();
 const jwt = require('jsonwebtoken')
 router.get('/', (req, res) => {
-	res.json("Auth route")
+  res.json("Auth route")
 })
 
 const SECRET = 'vipul_chaudhary_project_sign'
@@ -34,7 +34,6 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    console.log(req.body)
     const user = await User.findOne({ 'email': req.body.email })
     if (!user) {
       res.status(400).json({ 'message': 'User does not exists' })
@@ -42,18 +41,18 @@ router.post('/login', async (req, res) => {
       if (req.body.password != user.password) {
         res.status(400).json({ 'message': "Wrong credentials" })
       } else {
-				const payload = {
-					user : {
-						id: user.id
-					}
-				}
-				const token = jwt.sign(payload, SECRET)
-        res.status(200).json({ 'message': "Welcome" , token: token})
+        const payload = {
+          user: {
+            id: user.id
+          }
+        }
+        const token = jwt.sign(payload, SECRET)
+        res.status(200).json({ 'message': "Welcome", token: token })
       }
     }
   } catch (error) {
     res.status(500).json(error)
-		console.log(error)
+    console.log(error)
   }
 });
 

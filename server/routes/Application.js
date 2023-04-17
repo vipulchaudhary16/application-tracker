@@ -14,6 +14,7 @@ router.post('/add', verifyUser, async (req, res) => {
       company: req.body.company,
       role: req.body.role,
       status: req.body.status,
+      remark: req.body.remark,
       url: req.body.url,
       resume: req.body.resume,
       cv: req.body.cv

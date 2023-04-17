@@ -17,6 +17,9 @@ const application = new mongoose.Schema({
         type:String,
         required: true
     },
+    remark : {
+        type:String,
+    },
     url: {
         type:String,
     },

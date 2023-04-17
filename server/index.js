@@ -6,14 +6,14 @@ const cors = require('cors');
 app.use(cors());
 dotenv.config();
 
-const PORT = process.env.port || 8000;
+const PORT = process.env.port || 5000;
 
 app.use(express.json());
 
 connectToMongo()
 
-app.get("/api" , (req, res) => {
-    res.json({message: "Hello from API"})
+app.get("/api", (req, res) => {
+    res.json({ message: "Hello from API" })
 })
 
 app.use('/api/auth', require('./routes/Auth'))
