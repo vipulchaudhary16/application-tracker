@@ -2,11 +2,12 @@ const { Router } = require('express');
 const User = require('../models/User');
 const router = Router();
 const jwt = require('jsonwebtoken')
+const SECRET = process.env.JWT_SECRET
+
 router.get('/', (req, res) => {
   res.json("Auth route")
 })
 
-const SECRET = 'vipul_chaudhary_project_sign'
 router.post('/register', async (req, res) => {
   try {
     let newuser = await User.findOne({ email: req.body.email });

@@ -8,13 +8,13 @@ import { useContext } from "react";
 import { MODAL_TYPES, UIContext } from "../../context/ui.controler.context";
 import { PopUpModel } from "../PopUpModel";
 import UpdateApplication from "../Update Application/UpdateApplication";
+import { ApplicationProvider } from "../../context/applications.context";
 
 const Home = () => {
     const isLoggedIn = localStorage.getItem('token') ? true : false;
     const { activeModel } = useContext(UIContext);
-
     return (
-        <>
+        <ApplicationProvider>
             {
                 !isLoggedIn ? (
                     <Welcome />
@@ -26,7 +26,7 @@ const Home = () => {
                     </div>
                 )
             }
-        </>
+        </ApplicationProvider>
     );
 };
 

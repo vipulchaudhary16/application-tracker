@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const SECRET = 'vipul_chaudhary_project_sign'
+const SECRET = process.env.JWT_SECRET
 
 const verifyUser = (req, res, next) => {
   //Geting user from jwt token endpoint

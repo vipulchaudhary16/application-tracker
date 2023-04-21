@@ -13,9 +13,7 @@ root.render(
     <AlertProvider>
       <UIProvider>
         <UserProvider>
-          <ApplicationProvider>
-            <App />
-          </ApplicationProvider>
+          <App />
         </UserProvider>
       </UIProvider>
     </AlertProvider>

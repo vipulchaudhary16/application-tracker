@@ -11,7 +11,7 @@ export const ApplicationContext = createContext({
 })
 
 export const ApplicationProvider = ({ children }) => {
-    const API = 'https://application-tracker-api.vercel.app/api/application'
+    const API = `${process.env.REACT_APP_BACKEND_URL}/api/application`
     const [applications, setApplications] = useState([])
     const [updatingApplication, setUpdatingApplication] = useState([])
 
@@ -32,7 +32,6 @@ export const ApplicationProvider = ({ children }) => {
             },
         });
         const json = await response.json();
-        console.log(json)
         return json
     }
 
