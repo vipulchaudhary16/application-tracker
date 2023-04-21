@@ -21,7 +21,7 @@ Go to the server directory
 ```bash
   cd my-project
 ```
-Create .env file and add environment variables mentions aboove
+Create .env file and add environment variables mentioned
 
 Install dependencies
 
