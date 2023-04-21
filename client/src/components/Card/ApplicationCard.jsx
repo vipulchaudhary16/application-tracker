@@ -69,7 +69,7 @@ const ApplicationCard = ({ application }) => {
             <div>{
                 remarks && <>
                     <h2>Remarks:</h2>
-                    <p>{remarks.split("\n").map((remark) => <li>{remark}</li>)}</p>
+                    <p>{remarks.split("\n").map((remark, ind) => <li key={ind} >{remark}</li>)}</p>
                 </>
             }
             </div>

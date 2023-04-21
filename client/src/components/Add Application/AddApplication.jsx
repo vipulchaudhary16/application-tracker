@@ -22,6 +22,7 @@ const AddApplication = () => {
     const { addApplication, loadApplications } = useContext(ApplicationContext)
     const { setActiveModeType, setProgress } = useContext(UIContext)
     const { setAlertMessage } = useContext(AlertContext)
+    const [uploading, setUploading] = useState(false)
 
     const handleCompanyChange = (event) => {
         setCompany(event.target.value);
@@ -41,9 +42,14 @@ const AddApplication = () => {
 
     const handleResumeFileChange = (event) => {
         const resume = event.target.files[0];
+        if (resume.size > 2000000) {
+            setAlertMessage("File size exceeded")
+            return
+        }
+        setUploading(true)
         const fileStoreRef = storeRef(
             storage,
-            `resume/${resume.name}_${Math.random().toString(16).slice(2)}`
+            `job-app/${resume.name}_${Math.random().toString(16).slice(2)}`
         );
 
         const uploadTask = uploadBytesResumable(fileStoreRef, resume);
@@ -56,11 +62,13 @@ const AddApplication = () => {
             },
             (error) => {
                 setAlertMessage(error.message);
+                setUploading(false)
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
                     .then((downloadURL) => {
                         setResumeLink(downloadURL);
+                        setUploading(false)
                     })
             }
         );
@@ -68,9 +76,14 @@ const AddApplication = () => {
 
     const handleCvFileChange = (event) => {
         const cv = event.target.files[0];
+        if (cv.size > 2000000) {
+            setAlertMessage("File size exceeded")
+            return
+        }
+        setUploading(true)
         const fileStoreRef = storeRef(
             storage,
-            `cvs/${cv.name}_${Math.random().toString(16).slice(2)}`
+            `job-app/${cv.name}_${Math.random().toString(16).slice(2)}`
         );
 
         const uploadTask = uploadBytesResumable(fileStoreRef, cv);
@@ -83,11 +96,13 @@ const AddApplication = () => {
             },
             (error) => {
                 setAlertMessage(error.message);
+                setUploading(false)
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
                     .then((downloadURL) => {
                         setCvLink(downloadURL);
+                        setUploading(false)
                     })
             }
         );
@@ -105,7 +120,6 @@ const AddApplication = () => {
             resume: resumeLink,
             cv: cvLink,
         };
-        console.log(application)
         await addApplication(application).then((res) => {
             if (res.errors) {
                 setAlertMessage("Something went wrong")
@@ -153,18 +167,22 @@ const AddApplication = () => {
                 <input type="text" id="url" value={url} onChange={handleUrlChange} />
             </div>
             <div>
-                <label htmlFor="resumeFile">Resume</label>
+                <label htmlFor="resumeFile">Resume (max size 2 MB)</label>
                 <input type="file" id="resumeFile" onChange={handleResumeFileChange} accept="application/pdf" />
             </div>
             <div>
-                <label htmlFor="cvFile">CV</label>
+                <label htmlFor="cvFile">CV (max size 2 MB)</label>
                 <input type="file" id="cvFile" onChange={handleCvFileChange} accept="application/pdf" />
             </div>
             <div>
                 <label htmlFor="remark">Remark if any</label>
                 <textarea id="remark" value={remark} onChange={(e) => setRemark(e.target.value)} />
             </div>
-            <button type="submit" className='btn btn-primary'>Add Job Application</button>
+            {
+                uploading == false ?
+                    <button type="submit" className='btn btn-primary'>Add Job Application</button> :
+                    <button className='btn btn-primary'>Uploading files...</button>
+            }
         </form>
     );
 }
