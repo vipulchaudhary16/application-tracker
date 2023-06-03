@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { UIContext } from "./ui.controler.context";
 
 export const ApplicationContext = createContext({
     loadApplications: async () => { },
@@ -14,13 +15,16 @@ export const ApplicationProvider = ({ children }) => {
     const API = `${process.env.REACT_APP_BACKEND_URL}/api/application`
     const [applications, setApplications] = useState([])
     const [updatingApplication, setUpdatingApplication] = useState([])
+    const {setIsLoading} = useContext(UIContext)
 
     useEffect(() => {
         loadApplications()
     }, [])
 
     const loadApplications = async () => {
+        setIsLoading(true)
         setApplications(await getAllApplications())
+        setIsLoading(false)
     }
 
     const getAllApplications = async () => {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const application = new mongoose.Schema({
+const ApplicationSchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true
@@ -31,4 +31,4 @@ const application = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("application", application);
+module.exports = mongoose.model("application", ApplicationSchema);

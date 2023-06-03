@@ -9,13 +9,15 @@ import { useContext } from "react";
 import { AlertContext } from "./context/alert.context";
 import LoadingBar from "react-top-loading-bar";
 import { UIContext } from "./context/ui.controler.context";
+import { Loader } from "./components/Loader";
 
 function App() {
   const { alertMessage } = useContext(AlertContext)
-  const { progress, setProgress } = useContext(UIContext)
+  const { progress, setProgress, isLoading } = useContext(UIContext)
   return (
     <div className="App">
       {alertMessage && <Alert />}
+      {isLoading && <Loader/>}
       <BrowserRouter>
         <Navbar />
         <LoadingBar

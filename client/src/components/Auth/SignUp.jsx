@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from "../../context/user.context";
 import { AlertContext } from "../../context/alert.context";
+import { UIContext } from "../../context/ui.controler.context";
 //css in App.css
 
 const SignUp = () => {
@@ -10,9 +11,10 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
+    const {setIsLoading} = useContext(UIContext)
 
     const { signUp } = useContext(UserContext)
-    const {setAlertMessage} = useContext(AlertContext)
+    const { setAlertMessage } = useContext(AlertContext)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -20,6 +22,7 @@ const SignUp = () => {
             setAlertMessage("Password does not match")
             return
         }
+        setIsLoading(true)
         const response = await signUp({ name, email, password })
         if (response) {
             setAlertMessage("Account Created")
@@ -27,6 +30,7 @@ const SignUp = () => {
         } else {
             setAlertMessage("Failed")
         }
+        setIsLoading(false)
     };
 
     return (

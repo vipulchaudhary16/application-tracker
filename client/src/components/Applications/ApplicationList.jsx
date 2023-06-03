@@ -26,7 +26,7 @@ const ApplicationList = () => {
         setResult(
             applications.filter((application) => query(application))
         )
-    }, [searchQuery])
+    }, [applications, searchQuery])
 
     /*status filter query effect*/
     useEffect(() => {
@@ -42,7 +42,7 @@ const ApplicationList = () => {
             applications.filter((application) => query(application))
         )
 
-    }, [statusFilterQuery])
+    }, [applications, statusFilterQuery])
 
     useEffect(() => {
         loadApplications()

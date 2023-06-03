@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-// const connectionStr = 'mongodb://0.0.0.0:27017/awt';
 const connectionStr = process.env.MONGO_URI;
 const connectToMongo = () => {
     mongoose.connect(connectionStr, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {

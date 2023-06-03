@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from "../../context/user.context";
+import { UIContext } from "../../context/ui.controler.context";
 
 //css in App.css
 
@@ -8,17 +9,19 @@ const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
-
   const { logIn, loadUser } = useContext(UserContext)
+  const {setIsLoading} = useContext(UIContext)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true)
     const response = await logIn({ email: email, password: password })
     if (response) {
       navigate("/")
       localStorage.setItem('token', response.data.token)
       loadUser()
     }
+    setIsLoading(false)
   };
 
   return (
