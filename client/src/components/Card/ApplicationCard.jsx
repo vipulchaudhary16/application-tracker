@@ -12,6 +12,7 @@ const ApplicationCard = ({ application }) => {
     const { setActiveModeType } = useContext(UIContext);
     const { setAlertMessage } = useContext(AlertContext)
 
+
     const handleStatusChange = async (e) => {
         const updatedStatus = e.target.value;
         if (updatedStatus) {
@@ -32,9 +33,8 @@ const ApplicationCard = ({ application }) => {
     }
 
     const handleApplicationUpdate = async () => {
-        setActiveModeType(MODAL_TYPES.UPDATE)
+        setActiveModeType(MODAL_TYPES.ADD)
         setUpdatingApplication(application)
-        // setAlertMessage(res.message);
     }
 
     return (
@@ -46,14 +46,14 @@ const ApplicationCard = ({ application }) => {
             <h2>{company}</h2>
             <p className="role-name">{role}</p>
             <p>Status:
-                <select id="status" value={status} onChange={(e) => handleStatusChange(e)}>
-                    <option value="">Select Status</option>
+                <select id="status" value={status} name="status" onChange={(e) => handleStatusChange(e)}>
                     <option value="Applied">Applied</option>
-                    <option value="Ready to Apply">Ready to Apply</option>
+                    <option value="Ready To Apply">Ready to Apply</option>
                     <option value="Offered">Offered</option>
                     <option value="Signed">Signed</option>
                     <option value="Rejected">Rejected</option>
-                </select></p>
+                </select>
+                </p>
 
             <div className="links-container">
                 {
