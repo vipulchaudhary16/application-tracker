@@ -23,7 +23,8 @@ export const ApplicationProvider = ({ children }) => {
 
 	const loadApplications = async () => {
 		setIsLoading(true);
-		setApplications(await getAllApplications());
+		const applications = await getAllApplications();
+		if(applications) setApplications(applications)
 		setIsLoading(false);
 	};
 

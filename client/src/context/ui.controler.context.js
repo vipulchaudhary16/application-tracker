@@ -11,8 +11,7 @@ export const UIContext = createContext({
 });
 
 export const MODAL_TYPES = {
-	ADD: 'add',
-	UPDATE: 'update',
+	Application_form: 'Application_form',
 };
 
 export const UIProvider = ({ children }) => {
