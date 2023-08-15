@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-  --primary: #08202b;
-  --primary-light: #1073a1;
+  --primary: #fff;
+  --primary-light: #f9f9f9;
   --btn-primary: rgb(0, 82, 0);
-  --btn-secondary: rgb(203, 203, 1);
+  --btn-secondary: rgb(2, 171, 255);
   --container-top-m: 30px
 }
 
 body {
-  font-family: 'Ubuntu', sans-serif;
   background-color: var(--primary);
-  color: rgb(219, 206, 206);
+  font-family: 'Poppins', sans-serif;
 }
 
 * {
@@ -22,39 +21,48 @@ body {
 
 .btn {
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 25px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
+  box-sizing: border-box;
 }
 
 .btn-primary {
   background-color: var(--btn-primary);
+  border: 1px solid var(--btn-primary);
   color: white;
 }
 
 .btn-primary:hover{
-  background: rgb(14, 120, 14);
-  scale: 1.05;
   transition: ease-in-out 1ms;
+  background: transparent;
+  color: var(--btn-primary);
 }
 
 .btn-secondary {
   background-color: var(--btn-secondary);
-  color: black;
+  border: 1px solid var(--btn-secondary);
+  color: white;
 }
 
 .btn-secondary:hover{
-  background: rgb(189, 189, 65);
-  scale: 1.05;
   transition: ease-in-out 1ms;
+  background: transparent;
+  color: var(--btn-secondary);
+}
+
+.btn-danger{
+  background-color: rgb(255, 0, 0);
+  border: 1px solid rgb(255, 0, 0);
+  color: white;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 .link {
@@ -64,7 +72,7 @@ a {
 }
 
 .link:hover {
-  color: var(--btn-secondary);
+  color: var(--btn-primary);
 }
 
 .absolute-loader {

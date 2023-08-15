@@ -9,14 +9,15 @@ import { AlertProvider } from './context/alert.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AlertProvider>
-      <UIProvider>
-        <UserProvider>
-          <App />
-        </UserProvider>
-      </UIProvider>
-    </AlertProvider>
-  </React.StrictMode>
+	<React.StrictMode>
+		<ApplicationProvider>
+			<AlertProvider>
+				<UIProvider>
+					<UserProvider>
+						<App />
+					</UserProvider>
+				</UIProvider>
+			</AlertProvider>
+		</ApplicationProvider>
+	</React.StrictMode>
 );
-

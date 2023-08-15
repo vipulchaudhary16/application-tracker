@@ -1,42 +1,54 @@
 /*Welcome page css*/
 .home-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 10px;
+  min-height: 100vh;
+  padding: 5rem;
 }
 
-h1 {
-  font-size: 36px;
+.welcome-action-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.welcome-action-container h1{
+  font-size: 2rem;
   font-weight: bold;
-  text-align: center;
+  text-transform: uppercase;
+  color: var(--btn-secondary);
 }
 
-.quote {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-style: italic;
-  text-align: center;
-}
-
-.author {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: right;
+.product-specs-container p{
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 3px 0;
 }
 
 .button-container {
   display: flex;
-  margin-top: 50px;
   gap: 1rem;
+}
+
+.welcome-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.welcome-image-container img{
+  width: 50%;
+
 }
 
 /*Form CSS*/
 .signup-container form, .login-container form {
   width: 40%;
+  padding-top: 5rem;
 }
 
 form {
@@ -48,11 +60,9 @@ form {
   padding: 2rem;
 }
 
-form>h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
+form>h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 label {
@@ -65,8 +75,19 @@ textarea {
   padding: 7px 7px;
   font-size: 16px;
   font-weight: 500;
-  border-radius: 10px;
   margin-top: 5px;
+  outline: none;
+  border:none;
+  border-bottom: 1px solid black;
+}
+
+input:focus,
+textarea:focus{
+  border-bottom: 1px solid var(--btn-primary);
+}
+
+input[type="file"]{
+  border: none;
   outline: none;
 }
 
@@ -109,32 +130,7 @@ select {
   right: 10px;
 }
 
-.filter-container {
-  width: 100%;
-}
 
-.filters {
-  display: flex;
-  align-items: stretch;
-  width: 60%;
-  gap: 1rem;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.filters input {
-  width: 60%;
-}
-
-.filters select {
-  width: 60%;
-  padding: 7px 7px;
-  font-size: 16px;
-  font-weight: 500;
-  flex: 1;
-  border-radius: 10px;
-  margin-top: 5px;
-}
 
 .popup {
   position: fixed;

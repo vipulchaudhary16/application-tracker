@@ -1,0 +1,44 @@
+.profile{
+  padding: 0 2rem;
+  padding-top: 6rem;
+}
+
+.profile-container{
+  display: flex;
+  gap: 2rem;  
+}
+
+.profile h1{
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.profile-left{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  padding: 1rem;
+}
+
+.profile-left-actions button{
+  display: block;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.profile-right{
+  width: 80%;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  padding: 1rem;
+  padding: 1rem;
+}
+
+.profile-right h3{
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
