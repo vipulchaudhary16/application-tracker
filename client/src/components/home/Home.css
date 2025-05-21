@@ -1,0 +1,21 @@
+.home-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-top: 4rem;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+/*Mobile CSS*/
+@media screen and (max-width: 768px) {
+    .home-div {
+        gap: 1rem;
+    }
+}

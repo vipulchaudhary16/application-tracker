@@ -1,0 +1,48 @@
+.application-list-container {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.no-applications {
+	margin-top: 2rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.add-icon {
+	display: inline-block;
+	margin: 0 10px;
+	font-size: 1.5rem;
+	cursor: pointer;
+	margin-top: 1rem;
+}
+
+.filter-container {
+  width: 100%;
+}
+
+.filters {
+  display: flex;
+  align-items: stretch;
+  width: 60%;
+  gap: 1rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.filters input {
+  width: 60%;
+}
+
+.filters select {
+  width: 60%;
+  padding: 7px 7px;
+  font-size: 16px;
+  font-weight: 500;
+  flex: 1;
+  border-radius: 10px;
+  margin-top: 5px;
+}
